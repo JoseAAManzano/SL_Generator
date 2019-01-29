@@ -1,8 +1,7 @@
 # SL_Generator
 Generate verbal SL experiments
 
-Requires pykov, a python package to create markov chains. To install open a command pronpt and type:
-conda install pykov
+Requires Pykov, a python package to create finite regular markov chains. Follow install instructions at: https://github.com/riccardoscalco/Pykov
 
 # Usage
 python sl_exp_gen.py <python list of words> <reps per word> <output_file>
