@@ -12,6 +12,7 @@ import pykov
 import itertools
 import os
 import sys
+import numpy as np
 
 def produce_sentence(chain, steps=100):
     """
@@ -84,14 +85,14 @@ def create_files(word_list, reps, out_f):
     gen_ms_list(word_list, out_f, prob_between)
     markov_chain = pykov.Chain(pykov.readmat(out_f))
     sentence = produce_sentence(markov_chain, num_reps)
-    mbroli_sen = print_sentence_mbrola(sentence, word_lit)
+    mbroli_sen = print_sentence_mbrola(sentence, word_list)
 
 if __name__ == '__main__':
     if len(sys.argv) != 4:
         print('Usage: python sl_exp_gen.py <python list of words> <reps per word> <output_file>')
         print("Example: python sl_exp_gen.py ['bigoku','tadupa','datima','miteno','tobelu','bukoni','demuka','motufi'] 80 exp1.txt")
         sys.exit(1)
-    word_list = sys.argv[1]
+    word_list = [elem for elem in map(str, sys.argv[1].strip('[]').split(','))]
     reps = int(sys.argv[2])
     out_f = sys.argv[3]
     create_files(word_list, reps, out_f)
